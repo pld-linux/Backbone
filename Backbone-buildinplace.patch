@@ -1,0 +1,12 @@
+diff -ur o-System/Applications/Preferences/GNUmakefile.preamble System/Applications/Preferences/GNUmakefile.preamble
+--- o-System/Applications/Preferences/GNUmakefile.preamble	2003-08-16 11:19:29.000000000 -0600
++++ System/Applications/Preferences/GNUmakefile.preamble	2004-11-15 18:07:52.273097971 -0700
+@@ -26,7 +26,7 @@
+ ADDITIONAL_LDFLAGS += 
+ 
+ # Additional library directories the linker should search
+-ADDITIONAL_LIB_DIRS +=
++ADDITIONAL_LIB_DIRS += -L../../Frameworks/PrefsModule/PrefsModule.framework/Versions/Current/$(ARCH_OBJ_DIR)/$(LIBRARY_COMBO)
+ 
+ # Additional libraries
+ 
