@@ -109,9 +109,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_prefix}/System/Library/Frameworks/*.framework/Resources
 %dir %{_prefix}/System/Library/Frameworks/*.framework/Versions
 %dir %{_prefix}/System/Library/Frameworks/*.framework/Versions/*
-%{_prefix}/System/Library/Frameworks/*.framework/Versions/*/Resources
-%attr(755,root,root) %{_prefix}/System/Library/Frameworks/*.framework/Versions/*/%{gscpu}
-%{_prefix}/System/Library/Frameworks/*.framework/Versions/Current/*
+%{_prefix}/System/Library/Frameworks/*.framework/Versions/1.1.0/Resources
+%attr(755,root,root) %{_prefix}/System/Library/Frameworks/*.framework/Versions/1.1.0/%{gscpu}
 
 %attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/lib*.so.*
 
