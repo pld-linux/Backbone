@@ -3,7 +3,7 @@ Summary:	GNUstep backbone apps, including Preferences
 Summary(pl):	Szkieletowe aplikacje GNUstepa, w tym Preferences
 Name:		Backbone
 Version:	1.2.99
-Release:	0.%{cvs}.1
+Release:	0.%{cvs}.2
 License:	GPL
 Group:		X11/Applications
 Source0:	%{name}-%{cvs}.tar.gz
