@@ -1,5 +1,6 @@
 %define cvs	20031026
 Summary:	GNUstep backbone apps, including Preferences
+Summary(pl):	Szkieletowe aplikacje GNUstepa, w tym Preferences
 Name:		Backbone
 Version:	1.2.99
 Release:	0.%{cvs}.1
@@ -7,10 +8,10 @@ License:	GPL
 Group:		X11/Applications
 Source0:	%{name}-cvs-%{cvs}.tar.gz
 # Source0-md5:	f94861488dd0c8a589af9186c97704b3
-Patch0:	%{name}-instpath.patch
+Patch0:		%{name}-instpath.patch
 URL:		http://www.nongnu.org/backbone/
 BuildRequires:	gnustep-gui-devel
-Obsoletes: Preferences
+Obsoletes:	Preferences
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define         _prefix         /usr/lib/GNUstep
@@ -25,17 +26,24 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %endif
 
 %description
-GNUstep Backbone applications, including Preferences
+GNUstep Backbone applications, including Preferences.
+
+%description -l pl
+Szkieletowe aplikacje GNUstepa, w tym Preferences (edytor ustawieñ).
 
 %package devel
-Summary:	Header files for Backbone frameforks
+Summary:	Header files for Backbone frameworks
+Summary(pl):	Pliki nag³ówkowe dla bibliotek Backbone
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
 Requires:	gnustep-gui-devel
-Obsoletes: Preferences-devel
+Obsoletes:	Preferences-devel
 
 %description devel
 Header files for Backbone frameworks.
+
+%description devel -l pl
+Pliki nag³ówkowe dla bibliotek Backbone.
 
 %prep
 %setup -q -n System
