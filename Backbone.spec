@@ -1,4 +1,4 @@
-%define cvs	20031026
+%define cvs	20041115
 Summary:	GNUstep backbone apps, including Preferences
 Summary(pl):	Szkieletowe aplikacje GNUstepa, w tym Preferences
 Name:		Backbone
@@ -6,12 +6,16 @@ Version:	1.2.99
 Release:	0.%{cvs}.1
 License:	GPL
 Group:		X11/Applications
-Source0:	%{name}-cvs-%{cvs}.tar.gz
-# Source0-md5:	f94861488dd0c8a589af9186c97704b3
-Patch0:		%{name}-instpath.patch
+Source0:	%{name}-%{cvs}.tar.gz
+# Source0-md5:	303ba195aa04613b9792157e8aedaf5a
+Patch0:		%{name}-buildinplace.patch
+Patch1:		%{name}-installprefix.patch
+Patch2:		%{name}-initializeWithArguments.patch
 URL:		http://www.nongnu.org/backbone/
 BuildRequires:	gnustep-gui-devel
 Obsoletes:	Preferences
+Obsoletes:	Terminal
+Obsoletes:	TextEdit
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/%{_lib}/GNUstep
@@ -48,6 +52,8 @@ Pliki nag³ówkowe dla bibliotek Backbone.
 %prep
 %setup -q -n System
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
 
 %build
 . %{_prefix}/System/Library/Makefiles/GNUstep.sh
@@ -60,6 +66,7 @@ rm -rf $RPM_BUILD_ROOT
 . %{_prefix}/System/Library/Makefiles/GNUstep.sh
 
 %{__make} install \
+	INSTALL_ROOT_DIR=$RPM_BUILD_ROOT \
 	GNUSTEP_INSTALLATION_DIR=$RPM_BUILD_ROOT%{_prefix}/System
 
 %clean
@@ -75,12 +82,26 @@ rm -rf $RPM_BUILD_ROOT
 %{_prefix}/System/Applications/*.app/Resources/*.desktop
 %{_prefix}/System/Applications/*.app/Resources/*.plist
 %{_prefix}/System/Applications/*.app/Resources/*.tiff
+%{_prefix}/System/Applications/*.app/Resources/*.txt
+%{_prefix}/System/Applications/*.app/Resources/*.svcs
 %{_prefix}/System/Applications/*.app/Resources/English.lproj
+%lang(fr) %{_prefix}/System/Applications/*.app/Resources/French.lproj
+%lang(de) %{_prefix}/System/Applications/*.app/Resources/German.lproj
+%lang(hu) %{_prefix}/System/Applications/*.app/Resources/Hungarian.lproj
+%lang(nb) %{_prefix}/System/Applications/*.app/Resources/Norwegian.lproj
+%lang(ru) %{_prefix}/System/Applications/*.app/Resources/Russian.lproj
+%lang(es) %{_prefix}/System/Applications/*.app/Resources/Spanish.lproj
+%lang(se) %{_prefix}/System/Applications/*.app/Resources/Swedish.lproj
+%lang(tr) %{_prefix}/System/Applications/*.app/Resources/Turkish.lproj
 %dir %{_prefix}/System/Applications/*.app/%{gscpu}
 %dir %{_prefix}/System/Applications/*.app/%{gscpu}/%{gsos}
 %dir %{_prefix}/System/Applications/*.app/%{gscpu}/%{gsos}/%{libcombo}
 %attr(755,root,root) %{_prefix}/System/Applications/Preferences.app/Preferences
 %attr(755,root,root) %{_prefix}/System/Applications/Preferences.app/%{gscpu}/%{gsos}/%{libcombo}/Preferences
+%attr(755,root,root) %{_prefix}/System/Applications/Terminal.app/Terminal
+%attr(755,root,root) %{_prefix}/System/Applications/Terminal.app/%{gscpu}/%{gsos}/%{libcombo}/Terminal
+%attr(755,root,root) %{_prefix}/System/Applications/TextEdit.app/TextEdit
+%attr(755,root,root) %{_prefix}/System/Applications/TextEdit.app/%{gscpu}/%{gsos}/%{libcombo}/TextEdit
 %{_prefix}/System/Applications/*.app/%{gscpu}/%{gsos}/%{libcombo}/*.openapp
 %attr(755,root,root) %{_prefix}/System/Tools/%{gscpu}/%{gsos}/%{libcombo}/*
 
@@ -90,7 +111,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_prefix}/System/Library/Frameworks/*.framework/Versions/*
 %{_prefix}/System/Library/Frameworks/*.framework/Versions/*/Resources
 %attr(755,root,root) %{_prefix}/System/Library/Frameworks/*.framework/Versions/*/%{gscpu}
-%{_prefix}/System/Library/Frameworks/*.framework/Versions/Current
+%{_prefix}/System/Library/Frameworks/*.framework/Versions/Current/*
 
 %attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/lib*.so.*
 
