@@ -9,13 +9,14 @@ diff -ur o-System/Applications/Preferences/main.m System/Applications/Preference
 +#include <Foundation/NSProcessInfo.h>
  
 -int main (int argc, const char *argv[], const char *env[]) 
-+int main (int argc, const char *argv[], char *env[]) 
++int main (int argc, char *argv[], char *env[]) 
  {
 +#ifdef GS_PASS_ARGUMENTS
-+       [NSProcessInfo initializeWithArguments: (char**)argv count: argc environment: env];
++       [NSProcessInfo initializeWithArguments: argv count: argc environment: env];
 +#endif
 +
- 	return NSApplicationMain (argc, argv);
+-	return NSApplicationMain (argc, argv);
++	return NSApplicationMain (argc, (const char **)argv);
  }
 diff -ur o-System/Applications/Terminal/main.m System/Applications/Terminal/main.m
 --- o-System/Applications/Terminal/main.m	2003-11-25 08:51:54.000000000 -0700
