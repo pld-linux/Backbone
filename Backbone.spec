@@ -1,4 +1,4 @@
-%define cvs	20041115
+%define cvs	20050327
 Summary:	GNUstep backbone apps, including Preferences
 Summary(pl):	Szkieletowe aplikacje GNUstepa, w tym Preferences
 Name:		Backbone
@@ -7,10 +7,10 @@ Release:	0.%{cvs}.2
 License:	GPL
 Group:		X11/Applications
 Source0:	%{name}-%{cvs}.tar.gz
-# Source0-md5:	303ba195aa04613b9792157e8aedaf5a
+# Source0-md5:	7e599ad7c8acadc81b682602e2906175
 Patch0:		%{name}-buildinplace.patch
 Patch1:		%{name}-installprefix.patch
-Patch2:		%{name}-initializeWithArguments.patch
+Patch2:		%{name}-pass-arguments.patch
 URL:		http://www.nongnu.org/backbone/
 BuildRequires:	gnustep-gui-devel
 Obsoletes:	Preferences
