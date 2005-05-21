@@ -1,0 +1,73 @@
+diff -ur o-System/Applications/Preferences/main.m System/Applications/Preferences/main.m
+--- o-System/Applications/Preferences/main.m	2003-07-09 13:31:58.000000000 -0600
++++ System/Applications/Preferences/main.m	2005-03-27 12:20:15.000000000 -0700
+@@ -6,8 +6,14 @@
+ 
+ #include <AppKit/NSApplication.h>
+ #include <Foundation/NSBundle.h>
++#include <Foundation/NSBundle.h>
++#include <Foundation/NSProcessInfo.h>
+ 
+-int main (int argc, const char *argv[], const char *env[]) 
++int main (int argc, const char *argv[], char *env[]) 
+ {
++#ifdef GS_PASS_ARGUMENTS
++       [NSProcessInfo initializeWithArguments: argv count: argc environment: env];
++#endif
++
+ 	return NSApplicationMain (argc, argv);
+ }
+Only in System/Applications/Preferences/Modules/Colors: Colors.prefs
+Only in System/Applications/Preferences/Modules/Colors: obj
+Only in System/Applications/Preferences/Modules/Colors: shared_obj
+Only in System/Applications/Preferences/Modules/Defaults: Defaults.prefs
+Only in System/Applications/Preferences/Modules/Defaults: obj
+Only in System/Applications/Preferences/Modules/Defaults: shared_obj
+Only in System/Applications/Preferences/Modules/Font: Font.prefs
+Only in System/Applications/Preferences/Modules/Font: obj
+Only in System/Applications/Preferences/Modules/Font: shared_obj
+Only in System/Applications/Preferences/Modules/Keyboard: Keyboard.prefs
+Only in System/Applications/Preferences/Modules/Keyboard: obj
+Only in System/Applications/Preferences/Modules/Keyboard: shared_obj
+Only in System/Applications/Preferences/Modules/Time: obj
+Only in System/Applications/Preferences/Modules/Time: shared_obj
+Only in System/Applications/Preferences/Modules/Time: Time.prefs
+Only in System/Applications/Preferences: obj
+Only in System/Applications/Preferences: Preferences.app
+Only in System/Applications/Preferences: shared_obj
+diff -ur o-System/Applications/Terminal/main.m System/Applications/Terminal/main.m
+--- o-System/Applications/Terminal/main.m	2003-11-25 08:51:54.000000000 -0700
++++ System/Applications/Terminal/main.m	2005-03-27 11:30:33.000000000 -0700
+@@ -491,9 +491,12 @@
+ @end
+ 
+ 
+-int main(int argc, char **argv)
++int main(int argc, char **argv, char **env)
+ {
+ 	CREATE_AUTORELEASE_POOL(arp);
++#ifdef GS_PASS_ARGUMENTS
++       [NSProcessInfo initializeWithArguments: argv count: argc environment: env];
++#endif
+ 
+ /*	[NSObject enableDoubleReleaseCheck: YES];*/
+ 
+diff -ur o-System/Applications/TextEdit/Edit_main.m System/Applications/TextEdit/Edit_main.m
+--- o-System/Applications/TextEdit/Edit_main.m	2004-05-25 10:19:21.000000000 -0600
++++ System/Applications/TextEdit/Edit_main.m	2005-03-27 11:30:33.000000000 -0700
+@@ -1,5 +1,10 @@
+ #import <AppKit/NSApplication.h>
++#import <Foundation/NSProcessInfo.h>
++
++int main(int argc, char *argv[], char *env[]) {
++#ifdef GS_PASS_ARGUMENTS
++       [NSProcessInfo initializeWithArguments: argv count: argc environment: env];
++#endif
+ 
+-int main(int argc, const char *argv[]) {
+    return NSApplicationMain (argc, argv);
+ }
+Only in System/Frameworks/PrefsModule: derived_src
+Only in System/Frameworks/PrefsModule: obj
+Only in System/Frameworks/PrefsModule: PrefsModule.framework
+Only in System/Frameworks/PrefsModule: shared_obj
