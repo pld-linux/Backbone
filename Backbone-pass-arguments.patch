@@ -12,7 +12,7 @@ diff -ur o-System/Applications/Preferences/main.m System/Applications/Preference
 +int main (int argc, const char *argv[], char *env[]) 
  {
 +#ifdef GS_PASS_ARGUMENTS
-+       [NSProcessInfo initializeWithArguments: argv count: argc environment: env];
++       [NSProcessInfo initializeWithArguments: (char**)argv count: argc environment: env];
 +#endif
 +
  	return NSApplicationMain (argc, argv);
