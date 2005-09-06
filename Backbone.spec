@@ -57,7 +57,7 @@ Pliki nag³ówkowe dla bibliotek Backbone.
 
 %build
 . %{_prefix}/System/Library/Makefiles/GNUstep.sh
-%{__make} \
+%{__make} -j1 \
 	OPTFLAG="%{rpmcflags}" \
 	messages=yes
 
@@ -65,7 +65,7 @@ Pliki nag³ówkowe dla bibliotek Backbone.
 rm -rf $RPM_BUILD_ROOT
 . %{_prefix}/System/Library/Makefiles/GNUstep.sh
 
-%{__make} install \
+%{__make} -j1 install \
 	INSTALL_ROOT_DIR=$RPM_BUILD_ROOT \
 	GNUSTEP_INSTALLATION_DIR=$RPM_BUILD_ROOT%{_prefix}/System
 
