@@ -1,11 +1,10 @@
 diff -ur o-System/Applications/Preferences/main.m System/Applications/Preferences/main.m
 --- o-System/Applications/Preferences/main.m	2003-07-09 13:31:58.000000000 -0600
 +++ System/Applications/Preferences/main.m	2005-03-27 12:20:15.000000000 -0700
-@@ -6,8 +6,14 @@
+@@ -6,8 +6,13 @@
  
  #include <AppKit/NSApplication.h>
  #include <Foundation/NSBundle.h>
-+#include <Foundation/NSBundle.h>
 +#include <Foundation/NSProcessInfo.h>
  
 -int main (int argc, const char *argv[], const char *env[]) 
