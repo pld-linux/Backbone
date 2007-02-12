@@ -1,6 +1,6 @@
 %define cvs	20050327
 Summary:	GNUstep backbone apps, including Preferences
-Summary(pl):	Szkieletowe aplikacje GNUstepa, w tym Preferences
+Summary(pl.UTF-8):   Szkieletowe aplikacje GNUstepa, w tym Preferences
 Name:		Backbone
 Version:	1.2.99
 Release:	0.%{cvs}.3
@@ -32,12 +32,12 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 GNUstep Backbone applications, including Preferences.
 
-%description -l pl
-Szkieletowe aplikacje GNUstepa, w tym Preferences (edytor ustawieÒ).
+%description -l pl.UTF-8
+Szkieletowe aplikacje GNUstepa, w tym Preferences (edytor ustawie≈Ñ).
 
 %package devel
 Summary:	Header files for Backbone frameworks
-Summary(pl):	Pliki nag≥Ûwkowe dla bibliotek Backbone
+Summary(pl.UTF-8):   Pliki nag≈Ç√≥wkowe dla bibliotek Backbone
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	gnustep-gui-devel
@@ -46,8 +46,8 @@ Obsoletes:	Preferences-devel
 %description devel
 Header files for Backbone frameworks.
 
-%description devel -l pl
-Pliki nag≥Ûwkowe dla bibliotek Backbone.
+%description devel -l pl.UTF-8
+Pliki nag≈Ç√≥wkowe dla bibliotek Backbone.
 
 %prep
 %setup -q -n System
